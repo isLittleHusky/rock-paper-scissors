@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+		function computerSelection() {
+			var options = ['rock', 'paper', 'scissors'];
+			return options[Math.floor(Math.random() * 3)];
+		}
+
+		function playRound(playerChoice, computerChoice) {
+			if (playerChoice == computerChoice) {
+				return 'D';
+			}
+			else if (playerChoice == 'rock') {
+				if (computerChoice == 'scissors') {
+					return 'W';
+				}
+				else {
+					return 'L';
+				}
+			}	
+			else if (playerChoice == 'paper') {
+				if (computerChoice == 'rock') {
+					return 'W';
+				}
+				else {
+					return 'L';
+				}
+			}
+			else {
+				if (computerChoice == 'paper') {
+					return 'W';
+				}
+				else {
+					return 'L';
+				}
+			}
+		}
+
+		function game() {
+			var i;
+			var P = 0;
+			var C = 0;
+			for (var i = 0; i < 5; i++) {
+				var playerChoice = prompt('rock, paper or scissors?', 'rock').toLowerCase();
+				var computerChoice = computerSelection();
+				var outcome = playRound(playerChoice, computerChoice);
+				switch(outcome) {
+					case 'L':
+						console.log('You lost');
+						C++;
+						break;
+
+					case 'W':
+						console.log('You won');
+						P++;
+						break;
+
+					case 'D':
+						console.log('You drew');
+						break;
+				}
+			}
+			if (P == C) {
+				console.log('It was a draw');
+			}
+			else if (P > C) {
+				console.log('You won the game!');
+			}
+			else {
+				console.log('You lost the game...');
+			}
+		}
+		game();
+	</script>
+</head>
+</html>
